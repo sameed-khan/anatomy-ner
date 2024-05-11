@@ -7,7 +7,8 @@ max_jobs=48
 temp_file=$(mktemp)
 
 # Get the total number of files
-total_files=$(ls -1 /home/khans24/charit/anatomy_ner/mimic_cxr_reports/p10/*/*.txt | wc -l)
+file_paths=( $(find /home/sameed/charit/anatomy-ner/mimic_cxr_reports -type f -name *.txt) )
+total_files=${#file_paths[@]}
 
 # Initialize a counter for the processed files
 processed_files=0
@@ -32,7 +33,7 @@ process_file() {
 }
 
 # Iterate over all the files
-for file in /home/khans24/charit/anatomy_ner/mimic_cxr_reports/p10/*/*.txt
+for file in "${file_paths[@]}"
 do
     # Process the file in the background
     process_file $file &
@@ -48,7 +49,7 @@ done
 wait
 
 # Sort the file paths by word count and print the top 50
-sort -rn -k2 $temp_file | head -n50 >> /home/khans24/charit/anatomy_ner/data/longest_reports.txt
+sort -rn -k2 $temp_file > /home/sameed/charit/anatomy-ner/data/report_lengths.txt
 
 # Remove the temporary file
 rm $temp_file
