@@ -6,4 +6,4 @@ models/
 */*.html  # Any non-programmatic output I'm sharing with others
 
 # data files are too large, must be synced manually
-data/*
+data/
