@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="../static/styles.css">
+    <script defer src="../static/main.js"></script>
+</head>
+<body>
+    <div class="content">
+        <div class="progress-total-container">
+            <span class="progress-read">{{ labeled_rows }} labeled</span>
+            <div class="progress-bar-container">
+                <!-- Progress bar {{ progress }} inside width -->
+                <div class="progress-bar" style="width: {{ progress }}%"></div>
+            </div>
+        </div>
+        <div class="display-container">
+            <span class="sentence-display"></span>
+            <span class="label-display">No label</span>
+        </div>
+        <div class="fixed-button-container">
+            <button class="fixed-btn" id="correct">Correct (press SPACE)</button>
+            <button class="fixed-btn" id="delete">Delete (press del key)</button>
+        </div>
+        <div class="label-button-container">
+            <ul>
+                {% for keylabelpair in keybindings %}
+                <li class="label-btn" id={{ keylabelpair[0].lower() }}>
+                    <p class="label">{{ keylabelpair[1] }}</p>
+                    <p class="keybinding">{{ keylabelpair[0].upper() }}</p>
+                </li>
+                {% endfor %}
+            </ul>
+        </div>
+        <form id="myForm">
+            <input id="text-box0" type="text" tabindex="1" placeholder="Add custom label here">
+        </form>
+    </div>
+    <footer>
+        <span class="keybinding-help">&ltCtrl+Z&gt: undo annotation and go back to previous label</span>
+        <span class="author"> Created by Sameed Khan</span>
+    </footer>
+</body>
+</html>
