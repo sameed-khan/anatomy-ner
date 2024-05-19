@@ -1,0 +1,13 @@
+[tool.poetry]
+name = "sentence_annotation_interface"
+version = "0.1.0"
+description = "A Litestar web interface for easy annotation of data"
+authors = ["Sameed Khan <sameed.khan@case.edu>"]
+
+[tool.poetry.dependencies]
+python = "^3.9"
+litestar = {extras = ["standard"], version = "^1.0.0"}
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

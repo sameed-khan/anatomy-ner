@@ -7,3 +7,5 @@ models/
 
 # data files are too large, must be synced manually
 data/
+
+*/__pycache__/
